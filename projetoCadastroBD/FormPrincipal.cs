@@ -219,12 +219,13 @@ namespace projetoCadastroBD
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show(this,"Atençao: informações não salvas serão perdidasa", "IFSP",MessageBoxButtons.YesNo,
+            if (MessageBox.Show(this, "Atençao: informações não salvas serão perdidasa", "IFSP", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 LimpaCampos();
                 materialTabControl1.SelectedIndex = 1;
             }
         }
+
     }
 }

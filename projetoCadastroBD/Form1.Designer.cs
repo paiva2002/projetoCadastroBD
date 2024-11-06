@@ -30,8 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            ListViewGroup listViewGroup3 = new ListViewGroup("ListViewGroup", HorizontalAlignment.Left);
-            materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
+            tabPageCadastroCurso = new ReaLTaiizor.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
             txtButtonCancelar = new ReaLTaiizor.Controls.MaterialButton();
             txtButtonSalvar = new ReaLTaiizor.Controls.MaterialButton();
@@ -42,29 +41,30 @@
             txtDuracaoSemestre = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             txtCodigoCurso = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tabPage2 = new TabPage();
-            imageList1 = new ImageList(components);
-            mlvCurso = new ListView();
-            txtButtonNovo = new ReaLTaiizor.Controls.MaterialButton();
-            txtButtonEditar = new ReaLTaiizor.Controls.MaterialButton();
+            dataGridViewCurso = new DataGridView();
             txtButtonExcluir = new ReaLTaiizor.Controls.MaterialButton();
-            materialTabControl1.SuspendLayout();
+            txtButtonEditar = new ReaLTaiizor.Controls.MaterialButton();
+            txtButtonNovo = new ReaLTaiizor.Controls.MaterialButton();
+            imageList1 = new ImageList(components);
+            tabPageCadastroCurso.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCurso).BeginInit();
             SuspendLayout();
             // 
-            // materialTabControl1
+            // tabPageCadastroCurso
             // 
-            materialTabControl1.Controls.Add(tabPage1);
-            materialTabControl1.Controls.Add(tabPage2);
-            materialTabControl1.Depth = 0;
-            materialTabControl1.ImageList = imageList1;
-            materialTabControl1.Location = new Point(6, 80);
-            materialTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialTabControl1.Multiline = true;
-            materialTabControl1.Name = "materialTabControl1";
-            materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(778, 337);
-            materialTabControl1.TabIndex = 1;
+            tabPageCadastroCurso.Controls.Add(tabPage1);
+            tabPageCadastroCurso.Controls.Add(tabPage2);
+            tabPageCadastroCurso.Depth = 0;
+            tabPageCadastroCurso.ImageList = imageList1;
+            tabPageCadastroCurso.Location = new Point(6, 80);
+            tabPageCadastroCurso.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            tabPageCadastroCurso.Multiline = true;
+            tabPageCadastroCurso.Name = "tabPageCadastroCurso";
+            tabPageCadastroCurso.SelectedIndex = 0;
+            tabPageCadastroCurso.Size = new Size(778, 337);
+            tabPageCadastroCurso.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -104,6 +104,7 @@
             txtButtonCancelar.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             txtButtonCancelar.UseAccentColor = false;
             txtButtonCancelar.UseVisualStyleBackColor = true;
+            txtButtonCancelar.Click += txtButtonCancelar_Click;
             // 
             // txtButtonSalvar
             // 
@@ -124,6 +125,7 @@
             txtButtonSalvar.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             txtButtonSalvar.UseAccentColor = false;
             txtButtonSalvar.UseVisualStyleBackColor = true;
+            txtButtonSalvar.Click += txtButtonSalvar_Click;
             // 
             // txtPeriodoCurso
             // 
@@ -313,10 +315,10 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(dataGridViewCurso);
             tabPage2.Controls.Add(txtButtonExcluir);
             tabPage2.Controls.Add(txtButtonEditar);
             tabPage2.Controls.Add(txtButtonNovo);
-            tabPage2.Controls.Add(mlvCurso);
             tabPage2.ImageKey = "file.png";
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -326,27 +328,56 @@
             tabPage2.Text = "Consulta";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // imageList1
+            // dataGridViewCurso
             // 
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "baseline_fingerprint_black_24dp.png");
-            imageList1.Images.SetKeyName(1, "logo.png");
-            imageList1.Images.SetKeyName(2, "register.png");
-            imageList1.Images.SetKeyName(3, "file.png");
-            imageList1.Images.SetKeyName(4, "search.png");
+            dataGridViewCurso.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCurso.Location = new Point(6, 6);
+            dataGridViewCurso.Name = "dataGridViewCurso";
+            dataGridViewCurso.Size = new Size(758, 238);
+            dataGridViewCurso.TabIndex = 4;
+            dataGridViewCurso.CellDoubleClick += dataGridViewCurso_CellDoubleClick;
             // 
-            // mlvCurso
+            // txtButtonExcluir
             // 
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
-            mlvCurso.Groups.AddRange(new ListViewGroup[] { listViewGroup3 });
-            mlvCurso.Location = new Point(6, 6);
-            mlvCurso.Name = "mlvCurso";
-            mlvCurso.Size = new Size(758, 238);
-            mlvCurso.TabIndex = 0;
-            mlvCurso.UseCompatibleStateImageBehavior = false;
+            txtButtonExcluir.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            txtButtonExcluir.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            txtButtonExcluir.Depth = 0;
+            txtButtonExcluir.HighEmphasis = true;
+            txtButtonExcluir.Icon = null;
+            txtButtonExcluir.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            txtButtonExcluir.Location = new Point(520, 253);
+            txtButtonExcluir.Margin = new Padding(4, 6, 4, 6);
+            txtButtonExcluir.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            txtButtonExcluir.Name = "txtButtonExcluir";
+            txtButtonExcluir.NoAccentTextColor = Color.Empty;
+            txtButtonExcluir.Size = new Size(80, 36);
+            txtButtonExcluir.TabIndex = 3;
+            txtButtonExcluir.Text = "Excluir";
+            txtButtonExcluir.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            txtButtonExcluir.UseAccentColor = false;
+            txtButtonExcluir.UseVisualStyleBackColor = true;
+            txtButtonExcluir.Click += txtButtonExcluir_Click;
+            // 
+            // txtButtonEditar
+            // 
+            txtButtonEditar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            txtButtonEditar.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            txtButtonEditar.Depth = 0;
+            txtButtonEditar.HighEmphasis = true;
+            txtButtonEditar.Icon = null;
+            txtButtonEditar.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            txtButtonEditar.Location = new Point(296, 253);
+            txtButtonEditar.Margin = new Padding(4, 6, 4, 6);
+            txtButtonEditar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            txtButtonEditar.Name = "txtButtonEditar";
+            txtButtonEditar.NoAccentTextColor = Color.Empty;
+            txtButtonEditar.Size = new Size(71, 36);
+            txtButtonEditar.TabIndex = 2;
+            txtButtonEditar.Text = "Editar";
+            txtButtonEditar.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            txtButtonEditar.UseAccentColor = false;
+            txtButtonEditar.UseVisualStyleBackColor = true;
+            txtButtonEditar.Click += txtButtonEditar_Click;
             // 
             // txtButtonNovo
             // 
@@ -368,65 +399,37 @@
             txtButtonNovo.UseAccentColor = false;
             txtButtonNovo.UseVisualStyleBackColor = true;
             // 
-            // txtButtonEditar
+            // imageList1
             // 
-            txtButtonEditar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            txtButtonEditar.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            txtButtonEditar.Depth = 0;
-            txtButtonEditar.HighEmphasis = true;
-            txtButtonEditar.Icon = null;
-            txtButtonEditar.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            txtButtonEditar.Location = new Point(296, 253);
-            txtButtonEditar.Margin = new Padding(4, 6, 4, 6);
-            txtButtonEditar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            txtButtonEditar.Name = "txtButtonEditar";
-            txtButtonEditar.NoAccentTextColor = Color.Empty;
-            txtButtonEditar.Size = new Size(71, 36);
-            txtButtonEditar.TabIndex = 2;
-            txtButtonEditar.Text = "Editar";
-            txtButtonEditar.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            txtButtonEditar.UseAccentColor = false;
-            txtButtonEditar.UseVisualStyleBackColor = true;
-            // 
-            // txtButtonExcluir
-            // 
-            txtButtonExcluir.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            txtButtonExcluir.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            txtButtonExcluir.Depth = 0;
-            txtButtonExcluir.HighEmphasis = true;
-            txtButtonExcluir.Icon = null;
-            txtButtonExcluir.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            txtButtonExcluir.Location = new Point(520, 253);
-            txtButtonExcluir.Margin = new Padding(4, 6, 4, 6);
-            txtButtonExcluir.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            txtButtonExcluir.Name = "txtButtonExcluir";
-            txtButtonExcluir.NoAccentTextColor = Color.Empty;
-            txtButtonExcluir.Size = new Size(80, 36);
-            txtButtonExcluir.TabIndex = 3;
-            txtButtonExcluir.Text = "Excluir";
-            txtButtonExcluir.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            txtButtonExcluir.UseAccentColor = false;
-            txtButtonExcluir.UseVisualStyleBackColor = true;
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "baseline_fingerprint_black_24dp.png");
+            imageList1.Images.SetKeyName(1, "logo.png");
+            imageList1.Images.SetKeyName(2, "register.png");
+            imageList1.Images.SetKeyName(3, "file.png");
+            imageList1.Images.SetKeyName(4, "search.png");
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(materialTabControl1);
+            Controls.Add(tabPageCadastroCurso);
             Name = "Form1";
             Text = "Cadastro de Curso";
-            materialTabControl1.ResumeLayout(false);
+            tabPageCadastroCurso.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCurso).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ReaLTaiizor.Controls.MaterialTabControl materialTabControl1;
+        private ReaLTaiizor.Controls.MaterialTabControl tabPageCadastroCurso;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private ImageList imageList1;
@@ -438,9 +441,9 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtAreaCurso;
         private ReaLTaiizor.Controls.MaterialButton txtButtonCancelar;
         private ReaLTaiizor.Controls.MaterialButton txtButtonSalvar;
-        private ListView mlvCurso;
         private ReaLTaiizor.Controls.MaterialButton txtButtonExcluir;
         private ReaLTaiizor.Controls.MaterialButton txtButtonEditar;
         private ReaLTaiizor.Controls.MaterialButton txtButtonNovo;
+        private DataGridView dataGridViewCurso;
     }
 }

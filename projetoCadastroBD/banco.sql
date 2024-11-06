@@ -16,8 +16,12 @@ CREATE TABLE aluno(
 );
 
 CREATE TABLE curso(
-	codigo_curso VARCHAR(80) NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
+	codigo_curso VARCHAR(80) NOT NULL,
 	nome_curso VARCHAR(80) NOT NULL,
 	nivel_curso VARCHAR(80) NOT NULL,
-
+	duracao_semestre VARCHAR(80) NOT NULL,
+	periodo_curso VARCHAR(80) NOT NULL,
+	area_curso VARCHAR(80) NOT NULL,
+	PRIMARY KEY (id)
 );
