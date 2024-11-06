@@ -4,7 +4,7 @@ USE academico;
 
 CREATE TABLE aluno(
 	id INT NOT NULL AUTO_INCREMENT,
-	mstricula VARCHAR(15) NOT NULL,
+	matricula VARCHAR(15) NOT NULL,
 	dt_nascimento DATETIME NOT NULL,
 	nome VARCHAR(80) NOT NULL,
 	endereco VARCHAR(80) NOT NULL,
@@ -13,4 +13,11 @@ CREATE TABLE aluno(
 	estado VARCHAR(02) NOT NULL,
 	senha VARCHAR(20) NOT NULL,
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE curso(
+	codigo_curso VARCHAR(80) NOT NULL AUTO_INCREMENT,
+	nome_curso VARCHAR(80) NOT NULL,
+	nivel_curso VARCHAR(80) NOT NULL,
+
 );
